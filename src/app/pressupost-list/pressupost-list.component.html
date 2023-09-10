@@ -1,0 +1,27 @@
+<aside class="float-right ml-3">
+  <h3 class="text-primary">Listado de Presupuestos</h3>
+  <ul>
+    <li *ngFor="let budget of (searchResults.length > 0 ? searchResults : organizedBudgets)">
+      <hr>
+      <p class="text-info">Nombre: {{ budget.budgetName }}</p>
+      <p class="text-info">Cliente: {{ budget.clientName }}</p>
+      <p class="text-info">Precio: {{ budget.totalPrice }} €</p>
+    </li>
+  </ul>
+
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchTerm" class="form-control m-1" placeholder="Buscar presupuesto">
+    <button (click)="searchBudgets()" class="btn btn-primary m-1">Buscar</button>
+  </div>
+  <hr>
+
+  <div *ngIf="searchError" class="error-message text-danger">
+    No se encontraron resultados para "{{ searchTerm }}"
+  </div>
+
+  <div class="list-controls">
+    <button (click)="orderAlphabetically()" class="btn btn-primary m-1">Ordenar Alfabéticamente</button>
+    <button (click)="orderByDate()" class="btn btn-primary m-1">Ordenar por Fecha</button>
+    <button (click)="resetOrder()" class="btn btn-primary m-1">Reiniciar Orden</button>
+  </div>
+</aside>

@@ -1,0 +1,38 @@
+<div class="d-inline-block mb-3">
+  <form [formGroup]="panelForm" class="form-control border border-4 border-dark rounded rounded-4 p-4">
+    <div class="mb-3">
+      <label for="numPages">Número de páginas:</label>
+      <br>
+
+      <div class="d-flex align-items-center">
+        <button type="button" class="btn btn-primary btn-sm"
+          (click)="incrementOrDecrement('numPages', 'increment')">+</button>
+        <input type="number" class="form-control m-2" id="numPages" formControlName="numPages"
+          (change)="calculateCost()" min="1">
+        <button type="button" class="btn btn-primary btn-sm"
+          (click)="incrementOrDecrement('numPages', 'decrement')">-</button>
+        <button type="button" class="btn btn-info m-1" (click)="openHelpModal('numPages')">
+          <i class="fa fa-info-circle"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="numLanguages">Número de idiomas:</label>
+      <br>
+
+      <div class="d-flex align-items-center">
+        <button type="button" class="btn btn-primary btn-sm"
+          (click)="incrementOrDecrement('numLanguages', 'increment')">+</button>
+        <input type="number" class="form-control m-2" id="numLanguages" formControlName="numLanguages"
+          (change)="calculateCost()" min="1">
+        <button type="button" class="btn btn-primary btn-sm"
+          (click)="incrementOrDecrement('numLanguages', 'decrement')">-</button>
+        <button type="button" class="btn btn-info m-1" (click)="openHelpModal('numLanguages')">
+          <i class="fa fa-info-circle"></i>
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>

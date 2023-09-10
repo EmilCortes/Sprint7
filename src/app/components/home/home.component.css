@@ -1,0 +1,9 @@
+
+app-pressupost-list {
+  position: absolute; /* Posición absoluta para desplazarlo a la derecha */
+  top: 0; /* Alinea la parte superior del componente con la parte superior de la página */
+  right: 0; /* Alinea el componente a la derecha de la página */
+  width: 280px; /* Define el ancho del componente según tus necesidades */
+  background-color: #ffffff; /* Color de fondo opcional */
+  padding: 1px; /* Espaciado interior opcional */
+}
