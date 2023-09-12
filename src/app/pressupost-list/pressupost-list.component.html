@@ -1,5 +1,11 @@
 <aside class="float-right ml-3">
   <h3 class="text-primary">Listado de Presupuestos</h3>
+
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchTerm" class="form-control m-1" placeholder="Buscar presupuesto">
+    <button (click)="searchBudgets()" class="btn btn-primary m-1">Buscar</button>
+  </div>
+  
   <ul>
     <li *ngFor="let budget of (searchResults.length > 0 ? searchResults : organizedBudgets)">
       <hr>
@@ -9,10 +15,6 @@
     </li>
   </ul>
 
-  <div class="search-container">
-    <input type="text" [(ngModel)]="searchTerm" class="form-control m-1" placeholder="Buscar presupuesto">
-    <button (click)="searchBudgets()" class="btn btn-primary m-1">Buscar</button>
-  </div>
   <hr>
 
   <div *ngIf="searchError" class="error-message text-danger">
