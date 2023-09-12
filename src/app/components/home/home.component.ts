@@ -27,6 +27,8 @@ export class HomeComponent {
   checkbox3: boolean = false;
   additionalCost: number = 0;
   totalPrice: number = 0;
+  showBudgetNameError: boolean = false;
+  showClientNameError: boolean = false;
 
   numPages: number = 0;
   numLanguages: number = 0;
@@ -80,6 +82,13 @@ export class HomeComponent {
 
   addBudget() {
 
+    if (this.isInvalid(this.budgetName) || this.isInvalid(this.clientName)) {
+      // Mostrar mensajes de error
+      this.showBudgetNameError = this.isInvalid(this.budgetName);
+      this.showClientNameError = this.isInvalid(this.clientName);
+      return; // No hacer el push al array si los campos son inválidos
+    }
+
     // Asigna los valores de numPages y numLanguages al objeto presupuesto
     this.presupuesto.numPages = this.numPages;
     this.presupuesto.numLanguages = this.numLanguages;
@@ -92,7 +101,7 @@ export class HomeComponent {
       budgetName: this.budgetName,
       clientName: this.clientName,
       serviceSelected: '',
-      totalPrice: this.totalPrice, 
+      totalPrice: this.totalPrice,
       checkbox1: this.checkbox1,
       checkbox2: this.checkbox2,
       checkbox3: this.checkbox3,
@@ -124,5 +133,11 @@ export class HomeComponent {
     this.numPages = eventData.numPages;
     this.numLanguages = eventData.numLanguages;
   }
+
+  isInvalid(value: string): boolean {
+    // Verifica si el valor es null, undefined o contiene solo espacios en blanco
+    return value === null || value === undefined || value.trim() === '';
+  }
+
 
 }

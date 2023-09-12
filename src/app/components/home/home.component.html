@@ -4,10 +4,12 @@
       <div class="my-3">
         <label for="budgetName">Nombre del Presupuesto:</label>
         <input type="text" id="budgetName" [(ngModel)]="budgetName" required class="form-control">
+        <div class="error-message" *ngIf="isInvalid(budgetName)">Este campo es obligatorio.</div>
       </div>
       <div class="my-3">
         <label for="clientName">Cliente/a:</label>
         <input type="text" id="clientName" [(ngModel)]="clientName" required class="form-control">
+        <div class="error-message" *ngIf="isInvalid(clientName)">Este campo es obligatorio.</div>
       </div>
 
       <p>¿Qué quieres hacer?</p>
