@@ -17,8 +17,8 @@ export class PanelComponent {
   @Output() inputValuesChanged = new EventEmitter<{ numPages: number, numLanguages: number }>();
   panelForm!: FormGroup;
 
-  numPages: number = 0;
-  numLanguages: number = 0;
+  numPages: number = 1;
+  numLanguages: number = 1;
 
   presupuesto: Presupuesto = {
     budgetName: '',
@@ -27,8 +27,8 @@ export class PanelComponent {
     checkbox1: false,
     checkbox2: false,
     checkbox3: false,
-    numPages: 0,
-    numLanguages: 0,
+    numPages: 1,
+    numLanguages: 1,
     fechaCreacion: new Date().toLocaleDateString(),
   };
 
@@ -40,9 +40,10 @@ export class PanelComponent {
 
   ngOnInit(): void {
     this.panelForm = this.formBuilder.group({
-      numPages: [0],
-      numLanguages: [0]
+      numPages: [1],
+      numLanguages: [1]
     });
+
   }
 
   calculateCost(): void {
@@ -65,7 +66,7 @@ export class PanelComponent {
     if (operation === 'increment') {
       this.panelForm.get(fieldName)?.setValue(currentValue + 1);
       currentValue += 1
-    } else if (operation === 'decrement' && currentValue > 0) {
+    } else if (operation === 'decrement' && currentValue > 1) {
       this.panelForm.get(fieldName)?.setValue(currentValue - 1);
       currentValue -= 1
     }

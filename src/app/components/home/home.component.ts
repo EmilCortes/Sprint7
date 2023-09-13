@@ -25,13 +25,14 @@ export class HomeComponent {
   checkbox1: boolean = false;
   checkbox2: boolean = false;
   checkbox3: boolean = false;
-  additionalCost: number = 0;
+  additionalCost: number = 30;
   totalPrice: number = 0;
   showBudgetNameError: boolean = false;
   showClientNameError: boolean = false;
 
-  numPages: number = 0;
-  numLanguages: number = 0;
+
+  numPages: number = 1;
+  numLanguages: number = 1;
 
   presupuesto: Presupuesto = {  // Declaración de la propiedad presupuesto
     budgetName: '',
@@ -40,8 +41,8 @@ export class HomeComponent {
     checkbox1: false,
     checkbox2: false,
     checkbox3: false,
-    numPages: 0,
-    numLanguages: 0,
+    numPages: 1,
+    numLanguages: 1,
     fechaCreacion: new Date().toLocaleDateString(),
   };
 
@@ -87,6 +88,11 @@ export class HomeComponent {
       this.showBudgetNameError = this.isInvalid(this.budgetName);
       this.showClientNameError = this.isInvalid(this.clientName);
       return; // No hacer el push al array si los campos son inválidos
+    }
+
+    if (!this.checkbox1 && !this.checkbox2 && !this.checkbox3) {
+      alert('Debes marcar al menos un servicio antes de generar el presupuesto.');
+      return; // No continúes si ningún checkbox está marcado
     }
 
     // Asigna los valores de numPages y numLanguages al objeto presupuesto
